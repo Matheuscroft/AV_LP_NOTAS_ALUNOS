@@ -182,7 +182,7 @@ public static ArrayList<Aluno> MenuPrincipal(Scanner in, ArrayList<Aluno> _aluno
 
     try {
         opcaoMenu = in.nextInt();
-        //opcaoMenu = Integer.parseInt(in.next()) ;
+       
     } catch (InputMismatchException e){
         System.out.println("\nDigite um número!\n");
         in.next();
@@ -232,7 +232,7 @@ public static void ExcluirAluno(ArrayList<Aluno> alunos, Scanner in){
             ExcluirAluno(alunos, in);
         }
 
-        if(selecaoPersonagem > alunos.size() || selecaoPersonagem == 0){
+        if(selecaoPersonagem > alunos.size() || selecaoPersonagem <= 0){
             System.out.println("\nEntrada incorreta.\n");
             ExcluirAluno(alunos, in);
         }
@@ -297,7 +297,7 @@ public static void AlterarEstudante(ArrayList<Aluno> alunos, Scanner in){
             AlterarEstudante(alunos, in);
         }
 
-        if(selecaoPersonagem > alunos.size() || selecaoPersonagem == 0){
+        if(selecaoPersonagem > alunos.size() || selecaoPersonagem <= 0){
             System.out.println("Entrada incorreta.");
             AlterarEstudante(alunos, in);
         }
@@ -312,7 +312,7 @@ public static void AlterarEstudante(ArrayList<Aluno> alunos, Scanner in){
         MenuPrincipal(in, alunos);
 
     } else {
-        System.out.println("\nNão há personagens para alterar.\n");
+        System.out.println("\nNão há estudantes para alterar.\n");
         MenuPrincipal(in, alunos);
     }
 }
@@ -491,7 +491,6 @@ public static float RecebeNota(Scanner in, String nome, String nomeDisciplina, i
 	float nota = 0;
 	
 	System.out.println("\nQual a nota " + numeroNota +" de " + nome + " na disciplina " + nomeDisciplina + "?\n");
-	//nota1 = in.nextFloat();
 	
 	try {
 		nota = in.nextFloat();
@@ -499,12 +498,12 @@ public static float RecebeNota(Scanner in, String nome, String nomeDisciplina, i
     } catch (InputMismatchException e){
         System.out.println("\nDigite um número!\n");
         in.next();
-        RecebeNota(in, nome, nomeDisciplina, numeroNota);
+        nota = RecebeNota(in, nome, nomeDisciplina, numeroNota);
     }
 	
 	if(nota > 10) {
 		System.out.println("\nNota inválida!\n");
-		RecebeNota(in, nome, nomeDisciplina, numeroNota);
+		nota = RecebeNota(in, nome, nomeDisciplina, numeroNota);
 	}
 	
 	return nota;
